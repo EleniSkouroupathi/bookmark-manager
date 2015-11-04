@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+DataMapper.setup(:default, 'postgres://localhost/bookmarks')
 
 
 class Bookmark
@@ -12,7 +13,6 @@ class Bookmark
 
 end
 
-DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'postgres://localhost/bookmarks')
+# DataMapper::Logger.new($stdout, :debug)
 DataMapper.finalize
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
